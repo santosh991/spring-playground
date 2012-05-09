@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_springapp_domain_ProductOrder" items="${productorders}" z="gZf9+ZOWXAUqdxENZsieCS54Uv8=">
+        <table:table data="${productorders}" id="l_springapp_domain_ProductOrder" path="/productorders" z="I5Mou7jPl6lKSZHvfcjp/D8EPl0=">
+            <table:column calendar="true" dateTimePattern="${productOrder_orderdate_date_format}" id="c_springapp_domain_ProductOrder_orderDate" property="orderDate" z="zfOEBKe2QPLDEx8r0DcF7GSSuZw="/>
+            <table:column date="true" dateTimePattern="${productOrder_deliverydate_date_format}" id="c_springapp_domain_ProductOrder_deliveryDate" property="deliveryDate" z="ZsAR05juBX+buURLGr2JFVET4cQ="/>
+            <table:column id="c_springapp_domain_ProductOrder_items" property="items" z="G3tHEs1C66tenKO7yhD1FNB65bI="/>
+        </table:table>
+    </page:list>
+</div>

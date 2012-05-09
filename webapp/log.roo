@@ -1,0 +1,59 @@
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-04-24 12:21:43
+project --topLevelPackage springapp --projectName webapp --java 6 --packaging JAR
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-04-24 12:21:43
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-04-24 12:26:10
+hint
+jpa setup --provider ECLIPSELINK --database H2_IN_MEMORY 
+hint
+entity jpa --class ~.domain.Product --testAutomatically 
+field string --fieldName description --notNull --sizeMax 50
+field number --fieldName price --type java.lang.Double --notNull 
+entity jpa --class ~.domain.OrderItem --testAutomatically 
+field number --fieldName amount --type int --notNull 
+field reference --fieldName product --type ~.domain.Product --notNull 
+entity jpa --class ~.domain.ProductOrder --testAutomatically 
+field date --fieldName orderDate --type java.util.Calendar --notNull 
+field date --fieldName deliveryDate --type java.util.Date
+field set --fieldName items --type ~.domain.OrderItem
+perform tests 
+hint
+web mvc setup
+hint
+web mvc all --package ~.web
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-04-24 13:11:13
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-04-26 09:36:12
+hint log
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-04-26 09:47:07
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-04-26 14:15:30
+hint
+hint topics
+hint i18n
+hint
+help
+web mvc install language --code de 
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-04-26 17:30:22
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-04-27 07:38:37
+hint
+help
+logging setup --level DEBUG 
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-04-27 09:29:53
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-04-27 14:13:42
+logging setup --level INFO 
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-03 10:38:06
+hint jpa
+hint
+help
+jpa setup --provider ECLIPSELINK --database HYPERSONIC_PERSISTENT
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-03 11:44:27
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-04 15:01:23
+help
+security setup
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-04 16:04:21
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-07 10:03:15
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-07 11:05:33
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-07 15:34:48
+logging setup --level DEBUG 
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-07 15:41:26
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-09 14:47:45
+logging setup --level INFO 
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-09 15:22:36

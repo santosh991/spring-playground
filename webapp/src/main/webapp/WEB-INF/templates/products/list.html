@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Examples · Twitter Bootstrap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+
+    <!-- Le styles -->
+    <link href="../../../assets/css/bootstrap.css" th:href="@{/assets/css/bootstrap.css}" rel="stylesheet"/>
+    <link href="../../../assets/css/bootstrap-responsive.css" th:href="@{/assets/css/bootstrap-responsive.css}" rel="stylesheet"/>
+    <link href="../../../assets/css/docs.css"  th:href="@{/assets/css/docs.css}" rel="stylesheet"/>
+    <link href="../../../assets/js/google-code-prettify/prettify.css" th:href="@{/assets/js/google-code-prettify/prettify.css}" rel="stylesheet"/>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../../../assets/ico/favicon.ico" th:href="@{/assets/ico/favicon.ico}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../assets/ico/apple-touch-icon-144-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../assets/ico/apple-touch-icon-114-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../assets/ico/apple-touch-icon-72-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" href="../../../assets/ico/apple-touch-icon-57-precomposed.png"/>
+	
+  </head>
+  
+  <body>
+
+    <div th:include="index :: top">
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div th:include="index :: nav">
+          </div>
+        </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit">
+          <h2 th:text="#{entity_list_all(#{label_springapp_domain_product_plural})}"></h2>
+          <table th:unless="${#lists.isEmpty(products)}" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+				<th th:text="#{label_springapp_domain_product}">Product</th> 	         
+				<th th:text="#{label_springapp_domain_product_price}">Price</th>
+				<th/> 	         
+            </tr>
+          </thead>
+          <tr th:each="product : ${products}">
+          <td th:text="${product.description}">Tisch</td>
+          <td th:text="${product.price}">100.0</td>
+          <td><a class="btn" href="show.html" th:href="@{'/products/'+${product.id}}" th:text="#{entity_show(#{label_springapp_domain_product})}">Show product</a></td>
+          </tr>
+          </table>
+			<ul class="pager">
+			  <li th:if="${param.page[0]} &gt; '1'" class="previous">
+			    <a href="#" th:href="@{/products(page=${param.page[0]}-1,size='2')}"  th:utext="'&larr; ' + #{list_previous}">&larr; Previous</a>
+			  </li>
+			  <li th:if="${param.page[0]} &lt; ${maxPages}" class="next" >
+			    <a href="#" th:href="@{/products(page=${param.page[0]}+1,size='2')}" th:utext="#{list_next} + ' &rarr;'">Next &rarr;</a>
+			  </li>
+			</ul>          
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+	  <div th:include="index :: footer">
+	  </div>
+    </div><!--/.fluid-container-->
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../assets/js/jquery.js" th:src="@{/assets/js/jquery.js}"></script>
+ 	<script src="../../../assets/js/bootstrap-dropdown.js" th:src="@{/assets/js/bootstrap-dropdown.js}"></script>    
+  </body>
+</html>
