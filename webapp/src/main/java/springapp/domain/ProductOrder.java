@@ -29,4 +29,8 @@ public class ProductOrder {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date orderDate;
+    
+    public ProductOrder(){
+    	orderDate = new Date();
+    }
 }

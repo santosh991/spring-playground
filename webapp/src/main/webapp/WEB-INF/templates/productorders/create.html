@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>Examples · Twitter Bootstrap</title>
+<title>Products with Bootstrap</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content=""/>
 <meta name="author" content=""/>
@@ -55,11 +55,23 @@
                     <span class="labelTextError" th:if="${#fields.hasErrors('orderDate')}" th:text="#{message_form.validation.name}"></span>
                 <input type="text" name="orderDate" value="" id="orderDate" placeholder="Order date"  autofocus="autofocus" 
                     th:field="*{orderDate}" th:placeholder="#{label_springapp_domain_productorder_orderdate}" th:class="${#fields.hasErrors('orderDate')}? 'fieldError'" />
-                    
-                <label for="products" th:text="#{label_springapp_domain_productorder_orderdate}"
-                    th:class="${#fields.hasErrors('orderDate')}? 'labelError'">Product: </label>
-                    <span class="labelTextError" th:if="${#fields.hasErrors('orderDate')}" th:text="#{message_form.validation.name}"></span>
-                <select name="products">
+                
+                <table  th:unless="${#lists.isEmpty(productOrder.items)}" class="table table-bordered table-striped">
+		          <thead>
+		            <tr>
+						<th th:text="#{label_springapp_domain_orderitem_product}">Product</th> 	         
+						<th th:text="#{label_springapp_domain_orderitem_amount}">Amount</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            <tr th:each="item : productOrder.items">
+		              <td th:text="${item.product.description}">Tisch</td>
+		              <td th:text="${item.amount}">2</td>
+		            </tr>
+		          </tbody>
+                </table>    
+                <label for="products" th:text="#{label_springapp_domain_product_plural}">Products: </label>
+                <select name="products"  th:unless="${#lists.isEmpty(allProducts)}">
                       <option th:each="var : ${allProducts}" th:value="${var.id}" th:text="${var.description}">Tisch</option>
                 </select>
                 <br/>
