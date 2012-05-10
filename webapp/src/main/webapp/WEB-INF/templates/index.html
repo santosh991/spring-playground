@@ -18,7 +18,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico" th:href="@{/assets/ico/favicon.ico}"/>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/ico/apple-touch-icon-144-precomposed.png"/>
@@ -30,6 +30,18 @@
   <body>
 
 	<div th:fragment="top">
+    <div class="modal hide fade" id="about">
+    <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>My Company</h3>
+    </div>
+    <div class="modal-body">
+    <p>This is the example company for our spring playground.</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+    </div>
+    </div>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -59,8 +71,10 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-              <li><a href="#about" th:text="#{global_about}"  th:href="@{/about}">About</a></li>
-              <li><a href="#contact" th:text="#{global_contact}" th:href="@{/contact}">Contact</a></li>
+              <li>
+              <a data-toggle="modal" href="#about" th:text="#{global_about}">About</a>
+              </li>
+              <li><a href="mailto:contact@company.org" th:text="#{global_contact}">Contact</a></li>
               <li><a href="#contact" th:text="#{other_language}" th:href="@{'/?lang='+#{other_locale}}">Switch to German</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -110,5 +124,14 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../../assets/js/jquery.js" th:src="@{/assets/js/jquery.js}"></script>
  	<script src="../../assets/js/bootstrap-dropdown.js" th:src="@{/assets/js/bootstrap-dropdown.js}"></script>    
+ 	<script src="../../assets/js/bootstrap-modal.js" th:src="@{/assets/js/bootstrap-modal.js}"></script>    
+ 	<script src="../../assets/js/bootstrap-transition.js" th:src="@{/assets/js/bootstrap-transition.js}"></script>
+ 	
+
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../assets/js/bootstrap-transition.js"></script>
+    <script src="../../assets/js/bootstrap-modal.js"></script>
+    <script src="../../assets/js/bootstrap-dropdown.js"></script>
+ 	    
   </body>
 </html>

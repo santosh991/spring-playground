@@ -29,70 +29,49 @@
   
   <body>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#" th:text="#{application_name}">Products</a>
-          <div th:if="${username != null}" class="btn-group pull-right">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> Username
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
-            </ul>
-          </div>
-          <div th:if="${username == null}" class="btn-group pull-right">
-            <a class="btn btn-inverse" href="login.html" th:href="@{/login}">Login</a>
-          </div>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about" th:text="#{global_about}">About</a></li>
-              <li><a href="#contact" th:text="#{global_contact}">Contact</a></li>
-              <li><a href="#contact" th:text="#{other_language}" th:href="@{'/?lang='+#{other_locale}}">Switch to German</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+    <div th:include="index :: top">
     </div>
 
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header" th:text="#{menu_category_orderitem_label}">Order Item</li>
-              <li><a href="orderitems?form" th:href="@{orderitems(form)}" th:text="#{entity_create(#{menu_item_orderitem_new_label})}">Create new Order Item</a></li>
-              <li><a href="orderitems?page=1&amp;size=10" th:href="@{orderitems(page=1,size=10)}" th:text="#{entity_list_all(#{menu_item_orderitem_list_label})}">List all Order Items</a></li>
-              <li class="nav-header" th:text="#{menu_category_product_label}">Product</li>
-              <li><a href="products?form" th:href="@{products(form)}" th:text="#{entity_create(#{menu_item_product_new_label})}">Create new Product</a></li>
-              <li><a href="products?page=1&amp;size=10" th:href="@{products(page=1,size=10)}" th:text="#{entity_list_all(#{menu_item_product_list_label})}">List all Products</a></li>
-              <li class="nav-header" th:text="#{menu_category_productorder_label}">ProductOrder</li>
-              <li><a href="productorders?form" th:href="@{productorders(form)}" th:text="#{entity_create(#{menu_item_productorder_new_label})}">Create new Order</a></li>
-              <li><a href="productorders?page=1&amp;size=10" th:href="@{productorders(page=1,size=10)}" th:text="#{entity_list_all(#{menu_item_productorder_list_label})}">List all Orders</a></li>
-            </ul>
-          </div><!--/.well -->
+          <div th:include="index :: nav">
+          </div>
         </div><!--/span-->
         <div class="span9">
           <div class="hero-unit">
-            <h2 th:text="#{entity_create(#{label_springapp_domain_productorder})}">Create new Product Order</h2>
-            <p th:text="#{welcome_text}">Spring Roo provides interactive, lightweight and user customizable tooling that enables rapid delivery of high performance enterprise Java applications</p>
-            <p><a class="btn btn-primary btn-large" href="http://springsource.com" th:utext="#{global_learn_more}">Learn more &raquo;</a></p>
+            <h2 th:text="#{entity_create(#{label_springapp_domain_productorder})}">Create new Order</h2>
+            <form class="well" action="#" th:action="@{/productorders}" th:object="${productOrder}" method="POST">
+            <div id="errors" th:if="${#fields.hasErrors('*')}">
+                <ul>
+                    <li th:text="#{message_form.validation.errors}">Errors must be corrected before the form can be submitted</li>
+                </ul>
+            </div>
+
+            <fieldset >
+            
+                <label for="name" th:text="#{label_springapp_domain_productorder_orderdate}"
+                    th:class="${#fields.hasErrors('orderDate')}? 'labelError'">Orderdate: </label>
+                    <span class="labelTextError" th:if="${#fields.hasErrors('orderDate')}" th:text="#{message_form.validation.name}"></span>
+                <input type="text" name="orderDate" value="" id="orderDate" placeholder="Order date"  autofocus="autofocus" 
+                    th:field="*{orderDate}" th:placeholder="#{label_springapp_domain_productorder_orderdate}" th:class="${#fields.hasErrors('orderDate')}? 'fieldError'" />
+                    
+                <label for="products" th:text="#{label_springapp_domain_productorder_orderdate}"
+                    th:class="${#fields.hasErrors('orderDate')}? 'labelError'">Product: </label>
+                    <span class="labelTextError" th:if="${#fields.hasErrors('orderDate')}" th:text="#{message_form.validation.name}"></span>
+                <select name="products">
+                      <option th:each="var : ${allProducts}" th:value="${var.id}" th:text="${var.description}">Tisch</option>
+                </select>
+                <br/>
+                <button type="submit" name="save" value="Save" class="btn" th:text="#{button_save}">Submit Message</button>
+			</fieldset>                
+            </form>
           </div>
         </div><!--/span-->
       </div><!--/row-->
 
-      <hr/>
-
-
+	  <div th:include="index :: footer">
+	  </div>
     </div><!--/.fluid-container-->
     
     <!-- Placed at the end of the document so the pages load faster -->

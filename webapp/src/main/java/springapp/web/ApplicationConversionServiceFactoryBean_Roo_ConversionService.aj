@@ -66,7 +66,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<ProductOrder, String> ApplicationConversionServiceFactoryBean.getProductOrderToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<springapp.domain.ProductOrder, java.lang.String>() {
             public String convert(ProductOrder productOrder) {
-                return new StringBuilder().append(productOrder.getOrderDate()).append(" ").append(productOrder.getDeliveryDate()).toString();
+                return new StringBuilder().append(productOrder.getDeliveryDate()).append(" ").append(productOrder.getOrderDate()).toString();
             }
         };
     }

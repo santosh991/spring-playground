@@ -57,3 +57,7 @@ logging setup --level DEBUG
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-09 14:47:45
 logging setup --level INFO 
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-09 15:22:36
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-10 08:07:27
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-10 13:37:18
+// [failed] field date --class ~.domain.ProductOrder --fieldName orderDate --type java.util.Date
+field date --class ~.domain.ProductOrder --fieldName orderDate --type java.util.Date

@@ -3,8 +3,8 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_springapp_domain_ProductOrder" object="${productorder}" path="/productorders" z="C1ni2ztALChZzWezP10CbKyw3ZQ=">
-        <field:display calendar="true" dateTimePattern="${productOrder_orderdate_date_format}" field="orderDate" id="s_springapp_domain_ProductOrder_orderDate" object="${productorder}" z="H3/7vIoHpgqzcBqPeWxNHdnJnaA="/>
         <field:display date="true" dateTimePattern="${productOrder_deliverydate_date_format}" field="deliveryDate" id="s_springapp_domain_ProductOrder_deliveryDate" object="${productorder}" z="mzWm7arIOMG4/rGNm+tE8ApuiCg="/>
         <field:display field="items" id="s_springapp_domain_ProductOrder_items" object="${productorder}" z="R7KvIlpWZ/I1Q0YT1l4krVd4V9E="/>
+        <field:display date="true" dateTimePattern="${productOrder_orderdate_date_format}" field="orderDate" id="s_springapp_domain_ProductOrder_orderDate" object="${productorder}" z="kXZwfkejwxASXpgDLfnI24h+D98="/>
     </page:show>
 </div>

@@ -3,21 +3,12 @@
 
 package springapp.domain;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 import springapp.domain.OrderItem;
 import springapp.domain.ProductOrder;
 
 privileged aspect ProductOrder_Roo_JavaBean {
-    
-    public Calendar ProductOrder.getOrderDate() {
-        return this.orderDate;
-    }
-    
-    public void ProductOrder.setOrderDate(Calendar orderDate) {
-        this.orderDate = orderDate;
-    }
     
     public Date ProductOrder.getDeliveryDate() {
         return this.deliveryDate;
@@ -33,6 +24,14 @@ privileged aspect ProductOrder_Roo_JavaBean {
     
     public void ProductOrder.setItems(Set<OrderItem> items) {
         this.items = items;
+    }
+    
+    public Date ProductOrder.getOrderDate() {
+        return this.orderDate;
+    }
+    
+    public void ProductOrder.setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
     
 }

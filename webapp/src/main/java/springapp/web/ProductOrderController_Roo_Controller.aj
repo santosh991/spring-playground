@@ -90,8 +90,8 @@ privileged aspect ProductOrderController_Roo_Controller {
     }
     
     void ProductOrderController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("productOrder_orderdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("productOrder_deliverydate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("productOrder_orderdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void ProductOrderController.populateEditForm(Model uiModel, ProductOrder productOrder) {
